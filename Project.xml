@@ -46,7 +46,7 @@
 	<!-- PSYCH ENGINE CUSTOMIZATION -->
 	<define name="MODS_ALLOWED" if="desktop" />
 	<define name="LUA_ALLOWED" if="windows" />
-	<define name="ACHIEVEMENTS_ALLOWED" />
+	<!-- <define name="ACHIEVEMENTS_ALLOWED" /> -->
 
 	<!-- <define name="PRELOAD_ALL" /> -->
 	<define name="PRELOAD_ALL" unless="web" />
@@ -123,7 +123,7 @@
 	<assets path="assets/week6_high"    library="week6_high"    exclude="*.ogg" if="web"/>
 	<assets path="assets/week6_high"    library="week6_high"    exclude="*.mp3" unless="web"/>
 	
-	<assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/>
+	<!-- <assets path='example_mods' rename='mods' embed='false' if="MODS_ALLOWED"/> -->
 	<assets path='art/readme.txt' rename='do NOT readme.txt' />
 	<!-- <template path='mods' /> -->
 	

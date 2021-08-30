@@ -1,0 +1,150 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "LuckyPixel idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"fps": 24,
+			"anim": "singRIGHT",
+			"indices": [],
+			"name": "LuckyPixel sing-right"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel sing-left"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel sing-up"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel sing-down"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singRIGHTmiss",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel right-miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singLEFTmiss",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel left-miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singUPmiss",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel up-miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "singDOWNmiss",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel down-miss"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "firstDeath",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel dies"
+		},
+		{
+			"loop": true,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "deathLoop",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel retry-loop"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "deathConfirm",
+			"fps": 24,
+			"indices": [],
+			"name": "LuckyPixel retry-confirm"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "characters/lucky",
+	"position": [
+		200,
+		450
+	],
+	"healthicon": "face",
+	"flip_x": false,
+	"camera_position": [
+		-300,
+		-350
+	],
+	"sing_duration": 4,
+	"scale": 6.8
+}
