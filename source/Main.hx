@@ -83,5 +83,7 @@ class Main extends Sprite
 		FlxG.autoPause = false;
 		FlxG.mouse.visible = false;
 		#end
+
+		FlxG.sound.volume = 0.5;
 	}
 }

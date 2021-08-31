@@ -42,7 +42,7 @@ class StrumNote extends FlxSprite
 			colorSwap.saturation = ClientPrefs.arrowHSV[noteData % 4][1] / 100;
 			colorSwap.brightness = ClientPrefs.arrowHSV[noteData % 4][2] / 100;
 
-			if(animation.curAnim.name == 'confirm' && !PlayState.curStage.startsWith('school')) {
+			if(animation.curAnim.name == 'confirm' && !PlayState.isPixelShit) {
 				offset.x -= 13;
 				offset.y -= 13;
 			}

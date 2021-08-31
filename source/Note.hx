@@ -77,33 +77,32 @@ class Note extends FlxSprite
 
 		this.noteData = noteData;
 
-		var daStage:String = PlayState.curStage;
+		var isPixelShit:Bool = PlayState.isPixelShit;
 
-		switch (daStage)
+		if (isPixelShit)
 		{
-			case 'school' | 'schoolEvil':
-				if (isSustainNote)
-				{
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'));
-					width = width / 4;
-					height = height / 2;
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'), true, Math.floor(width), Math.floor(height));
-				} else {
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'));
-					width = width / 4;
-					height = height / 5;
-					loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'), true, Math.floor(width), Math.floor(height));
-				}
-				loadPixelNoteAnims();
+			if (isSustainNote)
+			{
+				loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'));
+				width = width / 4;
+				height = height / 2;
+				loadGraphic(Paths.image('weeb/pixelUI/NOTE_assetsENDS'), true, Math.floor(width), Math.floor(height));
+			} else {
+				loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'));
+				width = width / 4;
+				height = height / 5;
+				loadGraphic(Paths.image('weeb/pixelUI/NOTE_assets'), true, Math.floor(width), Math.floor(height));
+			}
+			loadPixelNoteAnims();
 
-				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
-				updateHitbox();
-				isPixel = true;
+			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+			updateHitbox();
+			isPixel = true;
 
-			default:
-				frames = Paths.getSparrowAtlas('NOTE_assets');
-				loadNoteAnims();
-				antialiasing = ClientPrefs.globalAntialiasing;
+		} else {
+			frames = Paths.getSparrowAtlas('NOTE_assets');
+			loadNoteAnims();
+			antialiasing = ClientPrefs.globalAntialiasing;
 		}
 
 		if(noteData > -1) {
@@ -157,7 +156,7 @@ class Note extends FlxSprite
 
 			x -= width / 2;
 
-			if (PlayState.curStage.startsWith('school'))
+			if (PlayState.isPixelShit)
 				x += 30;
 
 			if (prevNote.isSustainNote)

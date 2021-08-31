@@ -39,11 +39,11 @@ class Paths
 
 		if (currentLevel != null)
 		{
-			var levelPath = getLibraryPathForce(file, currentLevel + '_high');
-			if (!ClientPrefs.lowQuality && OpenFlAssets.exists(levelPath, type))
-				return levelPath;
+			// var levelPath = getLibraryPathForce(file, currentLevel + '_high');
+			// if (!ClientPrefs.lowQuality && OpenFlAssets.exists(levelPath, type))
+			// 	return levelPath;
 
-			levelPath = getLibraryPathForce(file, currentLevel);
+			var levelPath = getLibraryPathForce(file, currentLevel);
 			if (OpenFlAssets.exists(levelPath, type))
 				return levelPath;
 
@@ -144,11 +144,11 @@ class Paths
 
 		if (currentLevel != null)
 		{
-			var levelPath = getLibraryPathForce(key, currentLevel + '_high');
-			if (!ClientPrefs.lowQuality && FileSystem.exists(levelPath))
-				return File.getContent(levelPath);
+			// var levelPath = getLibraryPathForce(key, currentLevel + '_high');
+			// if (!ClientPrefs.lowQuality && FileSystem.exists(levelPath))
+			// 	return File.getContent(levelPath);
 
-			levelPath = getLibraryPathForce(key, currentLevel);
+			var levelPath = getLibraryPathForce(key, currentLevel);
 			if (FileSystem.exists(levelPath))
 				return File.getContent(levelPath);
 

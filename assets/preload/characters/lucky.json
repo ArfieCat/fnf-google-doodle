@@ -1,136 +1,136 @@
 {
 	"animations": [
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "idle",
-			"indices": [],
-			"name": "LuckyPixel idle"
+			"fps": 24,
+			"name": "LuckyPixel idle",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"fps": 24,
+			"loop": false,
 			"anim": "singRIGHT",
-			"indices": [],
-			"name": "LuckyPixel sing-right"
+			"fps": 24,
+			"name": "LuckyPixel sing-right",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFT",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel sing-left"
+			"name": "LuckyPixel sing-left",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUP",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel sing-up"
+			"name": "LuckyPixel sing-up",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWN",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel sing-down"
+			"name": "LuckyPixel sing-down",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singRIGHTmiss",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel right-miss"
+			"name": "LuckyPixel right-miss",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singLEFTmiss",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel left-miss"
+			"name": "LuckyPixel left-miss",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singUPmiss",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel up-miss"
+			"name": "LuckyPixel up-miss",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "singDOWNmiss",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel down-miss"
+			"name": "LuckyPixel down-miss",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
+			"loop": false,
+			"fps": 24,
 			"anim": "firstDeath",
-			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel dies"
+			"name": "LuckyPixel dies",
+			"indices": []
 		},
 		{
+			"offsets": [
+				0,
+				0
+			],
 			"loop": true,
-			"offsets": [
-				0,
-				0
-			],
-			"anim": "deathLoop",
 			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel retry-loop"
+			"anim": "deathLoop",
+			"name": "LuckyPixel retry-loop",
+			"indices": []
 		},
 		{
-			"loop": false,
 			"offsets": [
 				0,
 				0
 			],
-			"anim": "deathConfirm",
+			"loop": false,
 			"fps": 24,
-			"indices": [],
-			"name": "LuckyPixel retry-confirm"
+			"anim": "deathConfirm",
+			"name": "LuckyPixel retry-confirm",
+			"indices": []
 		}
 	],
 	"no_antialiasing": true,
@@ -142,9 +142,9 @@
 	"healthicon": "face",
 	"flip_x": false,
 	"camera_position": [
-		-300,
-		-350
+		-350,
+		-300
 	],
 	"sing_duration": 4,
-	"scale": 6.8
+	"scale": 6
 }
