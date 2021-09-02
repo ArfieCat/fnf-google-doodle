@@ -276,7 +276,7 @@ class PlayState extends MusicBeatState
 
 		switch (SONG.song.toLowerCase())
 		{
-			case 'rockin-out' | 'lucky-song-2' | 'lucky-song-3':
+			case 'rockin-out' | 'dad-battle' | 'lucky-song-3':
 				curStage = 'champion-island';
 				defaultCamZoom = 0.8;
 				isPixelShit = true;
@@ -287,12 +287,12 @@ class PlayState extends MusicBeatState
 				bgSky.scale.set(6, 6);
 				bgSky.updateHitbox();
 
-				var bgRocks:FlxSprite = new FlxSprite(-1200, -50);
+				var bgRocks:FlxSprite = new FlxSprite(-1200, -150);
 				bgRocks.loadGraphic(Paths.image('champion-island/layer2'), true, 622, 161);
 				if (!ClientPrefs.lowQuality) bgRocks.animation.add('fall', [0, 1, 2], 12, true);
 				else bgRocks.animation.add('fall', [0], 0, false);
 				bgRocks.animation.play('fall');
-				bgRocks.scrollFactor.set(0.6, 0.6);
+				bgRocks.scrollFactor.set(0.3, 0.3);
 				add(bgRocks);
 				bgRocks.antialiasing = false;
 				bgRocks.scale.set(6, 6);
@@ -392,11 +392,20 @@ class PlayState extends MusicBeatState
 		gf.y += gf.positionArray[1];
 		gf.scrollFactor.set(0.95, 0.95);
 
-		dad = new Character(DAD_X, DAD_Y, SONG.player2);
+		// code that flips those mfs 
+		if (SONG.song.toLowerCase() == 'dad-battle') {
+			dad = new Character(BF_X, BF_Y, SONG.player2);
+			boyfriend = new Boyfriend(DAD_X, DAD_Y, SONG.player1);
+			dad.flipX = !dad.flipX;
+			boyfriend.flipX = !boyfriend.flipX;
+		} else {
+			dad = new Character(DAD_X, DAD_Y, SONG.player2);
+			boyfriend = new Boyfriend(BF_X, BF_Y, SONG.player1);
+		}
+
 		dad.x += dad.positionArray[0];
 		dad.y += dad.positionArray[1];
 
-		boyfriend = new Boyfriend(BF_X, BF_Y, SONG.player1);
 		boyfriend.x += boyfriend.positionArray[0];
 		boyfriend.y += boyfriend.positionArray[1];
 
@@ -545,8 +554,13 @@ class PlayState extends MusicBeatState
 		add(healthBarBG);
 		if(ClientPrefs.downScroll) healthBarBG.y = 0.11 * FlxG.height;
 
-		healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), Std.int(healthBarBG.height - 8), this,
-			'health', 0, 2);
+		if (SONG.song.toLowerCase() == 'dad-battle') {
+			healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, LEFT_TO_RIGHT, Std.int(healthBarBG.width - 8), 
+			Std.int(healthBarBG.height - 8), this, 'health', 0, 2);
+		} else {
+			healthBar = new FlxBar(healthBarBG.x + 4, healthBarBG.y + 4, RIGHT_TO_LEFT, Std.int(healthBarBG.width - 8), 
+			Std.int(healthBarBG.height - 8), this, 'health', 0, 2);
+		}
 		healthBar.scrollFactor.set();
 		healthBar.createFilledBar(0xFFFF0000, 0xFF66FF33);
 		// healthBar
@@ -563,6 +577,11 @@ class PlayState extends MusicBeatState
 		iconP2.y = healthBar.y - (iconP2.height / 2);
 		iconP2.visible = !ClientPrefs.hideHud;
 		add(iconP2);
+
+		if (SONG.song.toLowerCase() == 'dad-battle') {
+			iconP1.flipX = !iconP1.flipX;
+			iconP2.flipX = !iconP2.flipX;
+		}
 
 		scoreTxt = new FlxText(0, healthBarBG.y + 36, FlxG.width, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -862,6 +881,17 @@ class PlayState extends MusicBeatState
 		if(ret != FunkinLua.Function_Stop) {
 			generateStaticArrows(0);
 			generateStaticArrows(1);
+
+			// flip yo shit!
+			if (SONG.song.toLowerCase() == 'dad-battle') {
+				playerStrums.forEach(function(spr:StrumNote) {
+					spr.x -= FlxG.width / 2;
+				});
+				opponentStrums.forEach(function(spr:StrumNote) {
+					spr.x += FlxG.width / 2;
+				});
+			}
+
 			for (i in 0...playerStrums.length) {
 				setOnLuas('defaultPlayerStrumX' + i, playerStrums.members[i].x);
 				setOnLuas('defaultPlayerStrumY' + i, playerStrums.members[i].y);
@@ -1133,20 +1163,31 @@ class PlayState extends MusicBeatState
 
 							sustainNote.mustPress = gottaHitNote;
 
-							if (sustainNote.mustPress)
-							{
-								sustainNote.x += FlxG.width / 2; // general offset
+							if (SONG.song.toLowerCase() == 'dad-battle') {
+								if (!sustainNote.mustPress){
+									sustainNote.x += FlxG.width / 2; // flip
+								}
+							} else {
+								if (sustainNote.mustPress){
+									sustainNote.x += FlxG.width / 2; // general offset
+								}
+
 							}
 						}
 					}
 
 					swagNote.mustPress = gottaHitNote;
 
-					if (swagNote.mustPress)
-					{
-						swagNote.x += FlxG.width / 2; // general offset
+					if (SONG.song.toLowerCase() == 'dad-battle') {
+						if (!swagNote.mustPress){
+							swagNote.x += FlxG.width / 2; // flip
+						}
+					} else {
+						if (swagNote.mustPress){
+							swagNote.x += FlxG.width / 2; // general offset
+						}
 					}
-					else {}
+
 				} else { //Event Notes
 					eventNotes.push(songNotes);
 					eventPushed(songNotes);
@@ -1644,8 +1685,13 @@ class PlayState extends MusicBeatState
 
 		var iconOffset:Int = 26;
 
-		iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
-		iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		if (SONG.song.toLowerCase() == 'dad-battle') {
+			iconP1.x = healthBar.x + (healthBar.width * (healthBar.percent * 0.01)) - (iconP2.width - iconOffset);
+			iconP2.x = healthBar.x + (healthBar.width * (healthBar.percent * 0.01) - iconOffset);
+		} else {
+			iconP1.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01) - iconOffset);
+			iconP2.x = healthBar.x + (healthBar.width * (FlxMath.remapToRange(healthBar.percent, 0, 100, 100, 0) * 0.01)) - (iconP2.width - iconOffset);
+		}
 
 		if (health > 2)
 			health = 2;
@@ -2335,20 +2381,27 @@ class PlayState extends MusicBeatState
 
 	public function moveCamera(isDad:Bool) {
 		if(isDad) {
-			camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
-			camFollow.x += dad.cameraPosition[0];
+			if (SONG.song.toLowerCase() == 'dad-battle') {
+				camFollow.set(dad.getMidpoint().x - 150, dad.getMidpoint().y - 100);
+				camFollow.x -= dad.cameraPosition[0];
+			} else {
+				camFollow.set(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
+				camFollow.x += dad.cameraPosition[0];
+			}
 			camFollow.y += dad.cameraPosition[1];
-			
-			if (dad.curCharacter.startsWith('mom'))
-				vocals.volume = 1;
 
 			if (SONG.song.toLowerCase() == 'tutorial')
 			{
 				tweenCamIn();
 			}
 		} else {
-			camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
-			camFollow.x -= boyfriend.cameraPosition[0];
+			if (SONG.song.toLowerCase() == 'dad-battle') {
+				camFollow.set(boyfriend.getMidpoint().x + 100, boyfriend.getMidpoint().y - 100);
+				camFollow.x += boyfriend.cameraPosition[0];
+			} else {
+				camFollow.set(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
+				camFollow.x -= boyfriend.cameraPosition[0];
+			}
 			camFollow.y += boyfriend.cameraPosition[1];
 
 			if (SONG.song.toLowerCase() == 'tutorial')

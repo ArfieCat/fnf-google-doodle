@@ -26,7 +26,9 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			case 'champion-island':
 				stageSuffix = '-pixel';
-				daBf = 'bf-pixel-dead';
+				if (PlayState.SONG.song.toLowerCase() == 'dad-battle') daBf = 'lucky';
+				else daBf = 'bf-pixel-dead';
+
 			default:
 				daBf = 'bf';
 		}
@@ -36,6 +38,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		Conductor.songPosition = 0;
 
 		bf = new Boyfriend(x, y, daBf);
+		if (daBf == 'lucky') bf.flipX = !bf.flipX;
 		add(bf);
 
 		camFollow = new FlxPoint(bf.getGraphicMidpoint().x, bf.getGraphicMidpoint().y);

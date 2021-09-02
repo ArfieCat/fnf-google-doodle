@@ -177,7 +177,7 @@ class Character extends FlxSprite
 			flipX = !flipX;
 
 			// Doesn't flip for BF, since his are already in the right place???
-			if (!curCharacter.startsWith('bf'))
+			if (!curCharacter.startsWith('bf') && !curCharacter.startsWith('lucky'))
 			{
 				// var animArray
 				if(animation.getByName('singLEFT') != null && animation.getByName('singRIGHT') != null)
