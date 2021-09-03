@@ -13,7 +13,10 @@ class HealthIcon extends FlxSprite
 	private var char:String = '';
 
 	// The following icons have antialiasing forced to be disabled
-	var noAntialiasing:Array<String> = ['bf-pixel', 'senpai', 'spirit'];
+	var noAntialiasing:Array<String> = ['bf-pixel', 'lucky'];
+
+	// The following icons have winning icons
+	var hasWinning:Array<String> = ['bf-pixel', 'lucky'];
 
 	public function new(char:String = 'bf', isPlayer:Bool = false)
 	{
@@ -44,7 +47,16 @@ class HealthIcon extends FlxSprite
 			var file:Dynamic = Paths.image(name);
 
 			loadGraphic(file, true, 150, 150);
-			animation.add(char, [0, 1], 0, false, isPlayer);
+			
+			for (i in 0...hasWinning.length) {
+				if (char == hasWinning[i]) {
+					animation.add(char, [0, 1, 2], 0, false, isPlayer);
+					break;
+				} else {
+					animation.add(char, [0, 1, 0], 0, false, isPlayer);
+				}
+			}
+
 			animation.play(char);
 			this.char = char;
 

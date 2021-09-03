@@ -26,7 +26,7 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			case 'champion-island':
 				stageSuffix = '-pixel';
-				if (PlayState.SONG.song.toLowerCase() == 'dad-battle') daBf = 'lucky';
+				if (PlayState.SONG.player1 == 'lucky') daBf = 'lucky';
 				else daBf = 'bf-pixel-dead';
 
 			default:
